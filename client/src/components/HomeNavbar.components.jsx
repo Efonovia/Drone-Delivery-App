@@ -10,7 +10,7 @@ function HomeNavbar() {
     
     return (
         <>
-            <div className="navbar">
+            {!open && <><div className="navbar">
                 <div className="nav-logo">
                     <a href>Logo</a>
                 </div>
@@ -29,10 +29,10 @@ function HomeNavbar() {
                 </div>
                 <div onClick={() => setOpen(true)} id="hamburger-menu">&#9776;</div>
             </div>
-            <div className='spacer'></div>
+            <div className='spacer'></div></>}
 
 {/* // MOBILE MENU */}
-            <div style={{display: open ? "flex": "none", transform: open ? "translateX(0%)": "translateX(-100%)"}} id="mobile-menu">
+            <div style={{zIndex: 99999999999, display: open ? "flex": "none", transform: open ? "translateX(0%)": "translateX(-100%)"}} id="mobile-menu">
                 <div onClick={()=>navigate("/user/login")} className="mobile-nav-button">
                     <div className="anim-layer"></div>
                     <a href>Log In</a>
@@ -43,7 +43,7 @@ function HomeNavbar() {
                 </div>
                 <div onClick={()=>navigate("/admin/login")} className="mobile-nav-button">
                     <div className="anim-layer"></div>
-                    <a href>a=Admin</a>
+                    <a href>Admin</a>
                 </div>
                 <div onClick={() => setOpen(false)} id="hamburger-cross">&#10006;</div>
             </div>

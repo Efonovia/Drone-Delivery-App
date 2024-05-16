@@ -13,7 +13,13 @@ function SelectDrones(props) {
         large: 40
     } 
 
-    const getAvailabilityQuery = useQuery("get drone availability", droneGetRequest)
+    const getAvailabilityQuery = useQuery("get drone availability", droneGetRequest,
+        { 
+            cacheTime: 0,
+            staleTime: 300000,
+            // onSuccess: () => setCurrentProcess(elements.find(element => !element.completed))
+        }
+    )
 
     function pickDrone(drone) {
         if(props.type === "old") return

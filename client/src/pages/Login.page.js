@@ -49,7 +49,7 @@ function Login() {
             return
         }
 
-        loginMutation.mutate({postDetails: formDetails, route: "login"})
+        loginMutation.mutate({postDetails: {...formDetails, admin: false}, route: "login"})
     }
 
 

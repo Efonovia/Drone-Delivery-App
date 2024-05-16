@@ -2,10 +2,19 @@ import React from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../state';
 
 
 function HorizontalNav(props) {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
+    function logout() {
+        dispatch(setUser(null))
+        navigate("/")
+    }
 
     return (
         <div className="container-fluid g-0">
@@ -27,7 +36,7 @@ function HorizontalNav(props) {
                             </div>
                         </div>
                         <div className="line_icon open_miniSide d-none d-lg-block">
-                            <button style={{background: "#182444"}} type="button" className="btn mb-3 btn-primary"><LogoutIcon />&nbsp;Logout</button>
+                            <button onClick={logout} style={{background: "#182444"}} type="button" className="btn mb-3 btn-primary"><LogoutIcon />&nbsp;Logout</button>
                         </div>
                     </div>
                 </div>

@@ -32,7 +32,7 @@ function UserViewSentDelivery() {
     const deliveryDetails= {
         sender: getDeliveryQuery.data?.body.sender,
         receiver: getDeliveryQuery.data?.body.receiver.email,
-        droneType: getDeliveryQuery.data?.body.drone.drone,
+        droneType: getDeliveryQuery.data?.body.drone.type,
         pickupLocation: getDeliveryQuery.data?.body.pickupLocation,
         deliveryLocation: getDeliveryQuery.data?.body.deliveryLocation,
         deliveryScheduledDate: getDateAndTimeObject(getDeliveryQuery.data?.body.deliveryScheduledDate).deliveryDate,
@@ -96,7 +96,7 @@ function UserViewSentDelivery() {
                                         isCompleted={currentProcess.completed} 
                                         completeProcess={completeProcess}
                                         goToElement={goToElement}
-                                        name={getDeliveryQuery.data?.body.receiver.fullName}
+                                        name={getDeliveryQuery.data?.body.receiver.firstName + " " + getDeliveryQuery.data?.body.receiver.lastName}
                                         receiverApproval={getDeliveryQuery.data?.body.receiverApproval}
                                         adminApproval={getDeliveryQuery.data?.body.adminApproval}
                                         refetch={getDeliveryQuery.refetch}

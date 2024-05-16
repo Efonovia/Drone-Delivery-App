@@ -11,6 +11,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import CheckIcon from '@mui/icons-material/Check';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
+import { nanoid } from '@reduxjs/toolkit';
 
 
 const navElements = [
@@ -29,7 +30,8 @@ function NavWrapper({ children }) {
 
     const navElementsHTML = navElements.map(el => {
         const isActive = location.pathname === `/admin/${el.name.split(" ")[0]}`
-        return <li style={{ cursor: "pointer" }}>
+        const uid = nanoid()
+        return <li key={uid} style={{ cursor: "pointer" }}>
                     <a style={isActive ? {textDecoration: "underline"} : {}} onClick={() => navigate(`/admin/${el.name.split(" ")[0]}`)} href aria-expanded="false">
                         <div className="nav_icon_small">
                             <el.icon />
@@ -41,7 +43,7 @@ function NavWrapper({ children }) {
 
     return (
         <>
-            <nav class={`sidebar dark_sidebar ${open && "active_sidebar"}`}>
+            <nav className={`sidebar dark_sidebar ${open && "active_sidebar"}`}>
                 <div className="logo d-flex justify-content-between">
                     {/* <a className="large_logo" href><img src={bigLogo} alt="pic" /></a>
                     <a className="small_logo" href><img src={miniLogo} alt="pic" /></a> */}

@@ -62,12 +62,16 @@ export const createNewUser = async (req, res) => {
 
 export const loginUser = async(req, res) => {
     try {
-      const { email, password } = req.body
+      const { email, password, admin } = req.body
       console.log(req.body)
       //Check if the user exists by using their email
       const user = await UserDatabase.findOne({ email: email })
       if(!user) {
-        return res.status(400).json({ok: false, error: "No account exists with that email" })
+        return res.status(404).json({ok: false, error: "No account exists with that email" })
+      }
+
+      if(user.isAdmin !== admin) {
+        return res.status(400).json({ok: false, error: "Invalid credentials" })
       }
   
       //Check if password is correct

@@ -8,6 +8,51 @@ const prices = {
     large: 40000
 }
 
+export const getStats = async(req, res) => {
+    try {
+        const allDeliveries = await DeliveryDatabase.find({ senderApproval: "approved" })
+        const customerCount = await UserDatabase.countDocuments({ isAdmin: false })
+
+        let income = 0
+        let active = 0
+        let successful = 0
+        let total = 0
+        let weight = 0
+
+        for(let i=0; i++; i<allDeliveries.length) {
+            const current = allDeliveries[i]
+            income += current.price
+            weight += current.payloadWeight
+            total += 1
+
+            if(current.completed) {
+                successful +=1
+            }
+
+            if(current.receiverApproval === "approved" && current.adminApproval === "approved" && current.hasPaid && !current.completed) {
+                active +=1
+            }
+        }
+
+        return res.status(200).json({ 
+            ok: true, 
+            body: {
+                totalIncome: income,
+                totalCustomers: customerCount,
+                totalDrones: 12,
+                activeDeliveries: active,
+                successfulDeliveries: successful,
+                totalDeliveries: total,
+                averagePackageWeight: weight/total
+            } 
+        })
+
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ ok: false, error: "Couldn't get stats" })
+    }
+}
+
 export const createDelivery = async(req, res) => {
     try {
         const {

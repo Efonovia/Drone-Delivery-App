@@ -14,6 +14,7 @@ export const getDronesAvailability = async(req, res) => {
 
         return res.status(200).json({ ok: true, body: drones })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({ ok: false, error: "error getting drones availability" })
     }
 }
