@@ -17,7 +17,7 @@ function Friends() {
     const dispatch = useDispatch()
 
     const handleClickOpen = () => {
-        setOpen(true);
+        setOpen(true); //testing repo
     };
   
     const handleClose = () => {
