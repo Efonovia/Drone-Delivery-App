@@ -1,0 +1,101 @@
+.grey-div {
+    background-color: grey;
+}
+
+.grey-div:hover {
+    background-color: white;
+}
+
+.grey-img {
+    filter: grayscale(100%);
+}
+
+.grey-img:hover {
+    filter: none;
+}
+
+.view-button {
+    background-color: white;
+    color: black;
+    padding: 3px 6px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.completed {
+    color: rgb(22, 223, 22);
+}
+
+.pending {
+    color: blue;
+}
+.current {
+    background-color: #00ff15;
+    color: white;
+    border-radius: 25px;
+    padding: 5px 10px;
+}
+
+.unprocessed {
+    color: rgb(239, 41, 41);
+}
+
+.profile-section {
+    width: 85vw;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.tl-button {
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tl-button:hover {
+    color: green;
+}
+
+.select-drone:hover {
+    background-color: #ffc68c;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #ffb11f;
+    cursor: pointer;
+}
+
+
+.select-drone-unavailable-div {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+.select-drone-unavailable-img {
+    filter: grayscale(100%);
+}
+
+.approval-waiting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    gap: 80px;
+    text-align: center;
+}
+
+.payment-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.payment-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

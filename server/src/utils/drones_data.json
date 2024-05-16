@@ -1,0 +1,50 @@
+[
+    {
+        "type": "small",
+        "isAvailable": true
+    },
+    {
+        "type": "medium",
+        "isAvailable": true
+    },
+    {
+        "type": "large",
+        "isAvailable": true
+    },
+    {
+        "type": "small",
+        "isAvailable": true
+    },
+    {
+        "type": "medium",
+        "isAvailable": true
+    },
+    {
+        "type": "large",
+        "isAvailable": true
+    },
+    {
+        "type": "small",
+        "isAvailable": true
+    },
+    {
+        "type": "medium",
+        "isAvailable": true
+    },
+    {
+        "type": "large",
+        "isAvailable": true
+    },
+    {
+        "type": "small",
+        "isAvailable": true
+    },
+    {
+        "type": "medium",
+        "isAvailable": true
+    },
+    {
+        "type": "large",
+        "isAvailable": true
+    }
+]

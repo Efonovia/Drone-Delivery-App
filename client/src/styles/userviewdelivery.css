@@ -1,0 +1,45 @@
+.main-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    background-color: antiquewhite;
+    gap: 20px;
+    margin: auto;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.delivery-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.single-detail {
+    font-size: 14px;
+}
+
+.single-detail > span {
+    color: #ffa600;
+    font-size: 18px;
+}
+
+.button-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.approve-btn:hover {
+    color: green !important;
+    background: white !important
+}
+
+.deny-btn:hover {
+    color: red !important;
+    background: white !important
+}
