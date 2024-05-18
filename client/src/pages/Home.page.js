@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styles/home.css"
-
+import { dronePic } from '../utils/utils';
 function Home() {
 
 
@@ -10,17 +10,7 @@ function Home() {
                 <div className="container">
                     <h1>NAME OF <span className='home-span'>APP</span></h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                        sit amet sem ligula. Mauris ut nisl a nibh luctus sodales.
-                        Phasellus dictum egestas sem, in euismod odio condimentum
-                        porttitor. Aenean diam sed neque ultricies, sit amet
-                        pellentesque quam pulvinar. Integer non orci orci. Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                        mattis lorem at ligula euismod, gravida tincidunt nunc
-                        euismod. Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Morbi sed dolor ac magna tincidunt ornare a sit amet
-                        dui. Sed euismod urna suscipit, luctus neque ut, ultrices
-                        tellus.
+                    Welcome to our innovative drone delivery platform, where efficiency meets convenience! Say goodbye to traditional delivery methods and embrace the future of logistics. Our platform empowers users like you to revolutionize how goods are transported, offering a seamless and reliable solution for all your delivery needs. Whether you're a business looking to optimize your supply chain or an individual seeking swift and eco-friendly delivery options, our platform has you covered. With a diverse selection of drones and advanced technology at your fingertips, you can effortlessly schedule, track, and manage deliveries with ease. Join us as we soar to new heights in the world of unmanned aerial delivery.
                     </p>
                 </div>
             </section>
@@ -28,19 +18,19 @@ function Home() {
                 <h1 style={{textAlign: "center", paddingBottom: "30px"}}>OUR DRONES</h1>
                 <div className="container">
                     <div>
-                        <img src="https://i.ibb.co/y4sTrtT/web-design.png" alt="Web Design" />
+                        <img src={dronePic.small} alt="Small drone" />
                         <h4>SMALL</h4>
                         <p>Max Capacity: <span className='home-span'>10KG</span></p>
                         <p>Price: <span className='home-span'>N10, 000</span></p>
                     </div>
                     <div>
-                        <img src="https://i.ibb.co/bdvKL6H/cheap-price.png" alt="Price" />
+                        <img src={dronePic["medium"]} alt="Price" />
                         <h4>MEDIUM</h4>
                         <p>Max Capacity: <span className='home-span'>25KG</span></p>
                         <p>Price: <span className='home-span'>N25, 000</span></p>
                     </div>
                     <div>
-                        <img src="https://i.ibb.co/17W1hVy/performance.png" alt="Performance" />
+                        <img src={dronePic.large} alt="Performance" />
                         <h4>LARGE</h4>
                         <p>Max Capacity: <span className='home-span'>40KG</span></p>
                         <p>Price: <span className='home-span'>N40, 000</span></p>

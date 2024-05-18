@@ -3,13 +3,14 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../state';
 
 
 function HorizontalNav(props) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const userInfo = useSelector(state => state.user)
 
     function logout() {
         dispatch(setUser(null))
@@ -30,7 +31,7 @@ function HorizontalNav(props) {
                                     <AccountCircleIcon sx={{ height: 40, width: 40 }}/>
                                 </div>
                                 <div className="author_name">
-                                    <h4 className="f_s_15 f_w_500 mb-0">Jiue Anderson</h4>
+                                    <h4 className="f_s_15 f_w_500 mb-0">{userInfo.firstName} {userInfo.lastName}</h4>
                                     <p className="f_s_12 f_w_400">Administrator</p>
                                 </div>
                             </div>

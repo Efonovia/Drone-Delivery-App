@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80vw;
     background-color: antiquewhite;
     gap: 20px;
     margin: auto;
@@ -20,6 +19,7 @@
 
 .single-detail {
     font-size: 14px;
+    text-align: center;
 }
 
 .single-detail > span {

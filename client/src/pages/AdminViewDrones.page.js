@@ -1,9 +1,9 @@
 import React from 'react';
-import itemPic from "../assets/img/products/img-5.png"
 import { useQuery } from 'react-query';
 import { droneGetRequest } from '../hooks/users.hooks';
 import ErrorBoundary from '../components/ErrorBoundary.components';
 import { CircularProgress } from '@mui/material';
+import { dronePic } from '../utils/utils';
 
 
 function AdminViewDrones() {
@@ -20,11 +20,11 @@ function AdminViewDrones() {
             <div className="col-md-4">
                 <div className={`white_card position-relative mb_20 ${!isAvailable ? "grey-div" : ""}`}>
                     <div className="card-body">
-                        <img src={itemPic} alt="" className={`d-block mx-auto my-4 ${!isAvailable ? "grey-img" : ""}`} height="150" />
+                        <img src={dronePic[drone]} alt="" className={`d-block mx-auto my-4 ${!isAvailable ? "grey-img" : ""}`} height="150" />
                         <div className="row my-4">
                             <div className="col">
                                 <span style={{ background: isAvailable ? "green": "red", color: "white" }} className="badge_btn_3  mb-1">{isAvailable? "Available": "Unavailable"}</span> 
-                                <a href className="f_w_400 color_text_3 f_s_14 d-block">{drone.toLocaleUpperCase()}</a>
+                                <a href style={{fontWeight: 800, color: "#ffb11f"}} className="f_w_400 color_text_3 f_s_14 d-block">{drone.toLocaleUpperCase()}</a>
                             </div>
                             <div className="col-auto">
                                 <p className="text-dark mt-0">Qty Available: {getAvailabilityQuery.data?.body[drone]}</p>

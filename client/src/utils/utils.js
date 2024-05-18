@@ -1,4 +1,14 @@
+import smallDrone from "../assets/img/drone-small.png"
+import mediumDrone from "../assets/img/drone-medium.png"
+import largeDrone from "../assets/img/drone-large.png"
+
 export const centerStyle = {display: "flex", justifyContent: "center", alignItems: "center"}
+
+export const dronePic = {
+    small: smallDrone,
+    medium: mediumDrone,
+    large: largeDrone
+}
 
 export function formatDate(date) {
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -68,6 +78,32 @@ export function getDateAndTimeObject(dateInput) {
     const deliveryTime = `${hours}:${minutes}`;
 
     return { deliveryDate, deliveryTime };
+}
+
+const statusPriority = {
+    "ACTIVE": 0,
+    "Needs your approval": 1,
+    "Unprocessed": 1,
+    "Pending": 2,
+}
+
+export function sortDeliveries(arr, client) {
+    if(arr.length < 1) return []
+    return arr.sort((a, b) => {
+        console.log(a)
+        console.log(getDeliveryStatus(a, client))
+        const statusA = getDeliveryStatus(a, client).status
+        const statusB = getDeliveryStatus(b, client).status
+    
+        const priorityA = statusPriority[statusA] !== undefined ? statusPriority[statusA] : Infinity;
+        const priorityB = statusPriority[statusB] !== undefined ? statusPriority[statusB] : Infinity;
+    
+        if (priorityA === priorityB) {
+            return statusA.localeCompare(statusB) || 0;
+        }
+    
+        return priorityA - priorityB;
+    })
 }
 
 export function getDeliveryStatus(delivery, client) {
@@ -160,6 +196,13 @@ export function getDeliveryStatus(delivery, client) {
             return { 
                     status: "Completed",
                     color: "#00ff15",
+                }
+        }
+
+        if(receiverApproval === "approved" && hasPaid && adminApproval === "denied") {
+            return { 
+                    status: "Denied",
+                    color: "red",
                 }
         }
     }

@@ -14,12 +14,12 @@ export const getStats = async(req, res) => {
         const customerCount = await UserDatabase.countDocuments({ isAdmin: false })
 
         let income = 0
-        let active = 0
+        let processed = 0
         let successful = 0
         let total = 0
         let weight = 0
 
-        for(let i=0; i++; i<allDeliveries.length) {
+        for(let i=0;i<6; i++) {
             const current = allDeliveries[i]
             income += current.price
             weight += current.payloadWeight
@@ -30,7 +30,7 @@ export const getStats = async(req, res) => {
             }
 
             if(current.receiverApproval === "approved" && current.adminApproval === "approved" && current.hasPaid && !current.completed) {
-                active +=1
+                processed +=1
             }
         }
 
@@ -40,7 +40,7 @@ export const getStats = async(req, res) => {
                 totalIncome: income,
                 totalCustomers: customerCount,
                 totalDrones: 12,
-                activeDeliveries: active,
+                processedDeliveries: active,
                 successfulDeliveries: successful,
                 totalDeliveries: total,
                 averagePackageWeight: weight/total
@@ -180,7 +180,7 @@ export const getAdminAllDeliveries = async(req, res) => {
         { 
             senderApproval: "approved",
             receiverApproval: "approved",
-            haspaid: true
+            hasPaid: true
 
         }, { '__v': 0 })
         .populate({

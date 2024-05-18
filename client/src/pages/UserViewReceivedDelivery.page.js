@@ -52,8 +52,8 @@ function UserViewReceivedDelivery() {
 
     return (
         <>
-            <AlertDialogSlide type={type} open={open} deliveryId={deliveryId} handleClose={handleClose} refetch={getDeliveryDetailsQuery.refetch} />
-            <div className="main-body">
+            <AlertDialogSlide type={type} open={open} deliveryId={deliveryId} handleClose={handleClose} clientType="receiverApproval" redir="/user/received" refetch={getDeliveryDetailsQuery.refetch} />
+            <div style={{width: "80vw"}} className="main-body">
                 <h1><FeedIcon sx={{ color: "#ffb11f", height: 45, width: 45 }}/> Delivery Details</h1>
                 <div className="delivery-details">
                     <div className="single-detail">Name of sender: <span>{sender.firstName} {sender.lastName}</span></div>

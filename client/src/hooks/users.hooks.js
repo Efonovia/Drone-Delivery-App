@@ -1,3 +1,4 @@
+/* eslint-disable no-throw-literal */
 const API_URL = "http://localhost:8000"
 
 export const userPostRequest = async ({postDetails, route}) => {
@@ -28,11 +29,31 @@ export const droneGetRequest = async () => {
 }
 
 export const deliveryGetRequest = async ({ route }) => {
-    const response =  await fetch(`${API_URL}/deliveries/${route}`)
-    const data = await response.json()
-    if(!data.ok) throw new Error(data.error)
-    return data
-}
+    try {
+      const response = await fetch(`${API_URL}/deliveries/${route}`);
+      if (!response.ok) {
+        throw {
+          status: response.status,
+          statusText: response.statusText,
+          data: await response.json(),
+        };
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      if (error instanceof Error) {
+        // Handle regular JavaScript errors
+        throw error;
+      } else {
+        // Handle errors that conform to React Query's error convention
+        throw {
+          status: error.status || 'UNKNOWN_ERROR',
+          statusText: error.statusText || 'An unknown error occurred',
+          data: error.data || null,
+        };
+      }
+    }
+  };
 
 export const deliveryPostRequest = async ({postDetails, route}) => {
     const response =  await fetch(`${API_URL}/deliveries/${route}`, {

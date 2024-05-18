@@ -34,14 +34,14 @@ export default function AlertDialogSlide(props) {
                     props.refetch()
                 }
                 if(props.type === "denied") {
-                    navigate("/user/received")
+                    navigate(props.redir)
                 }
             }
         }
     })
 
     function handleApproval() {
-        changeApprovalMutation.mutate({ postDetails: { deliveryId: props.deliveryId, updates: [{ field: "receiverApproval", value: props.type }] }, route: `edit` })
+        changeApprovalMutation.mutate({ postDetails: { deliveryId: props.deliveryId, updates: [{ field: props.clientType, value: props.type }] }, route: `edit` })
     }
 
   return (

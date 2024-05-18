@@ -1,9 +1,9 @@
 import React from 'react';
-import itemPic from "../../assets/img/products/img-5.png"
 import { useQuery } from 'react-query';
 import { droneGetRequest } from '../../hooks/users.hooks';
 import ErrorBoundary from '../ErrorBoundary.components';
 import { CircularProgress } from '@mui/material';
+import { dronePic } from '../../utils/utils';
 
 
 function SelectDrones(props) {
@@ -43,7 +43,7 @@ function SelectDrones(props) {
             <div key={drone} onClick={()=>pickDrone(drone)} className={`${props.type === "new" ? classForNew: classForOld} col-md-4`}>
                 <div className={`white_card position-relative ${props.type === "new" ? classForNew: classForOld}`}>
                     <div className="card-body">
-                        <img src={itemPic} alt="" className={`d-block mx-auto ${props.type==="new" && !getAvailabilityQuery?.data?.body?.[drone] > 0 && "select-drone-unavailable-img"}`} height="150" />
+                        <img src={dronePic[drone]} alt="" className={`d-block mx-auto ${props.type==="new" && !getAvailabilityQuery?.data?.body?.[drone] > 0 && "select-drone-unavailable-img"}`} height="150" />
                         <div className="row">
                             <div className="col">
                                 {props.type === "new"&&<span style={{ background: getAvailabilityQuery?.data?.body?.[drone] > 0?"green":'red', color: "white" }} className="badge_btn_3  mb-1">{getAvailabilityQuery.data?.body?.[drone] > 0?"Available": "Unavailable"}</span> }

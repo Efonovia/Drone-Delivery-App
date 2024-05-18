@@ -7,7 +7,7 @@ import ProcessPayment from '../components/delivery processes/ProcessPayment.comp
 import Completed from '../components/delivery processes/Completed.components';
 import WaitingForRecipientApproval from '../components/delivery processes/WaitingForRecipientApproval.components';
 import WaitingForAdminApproval from '../components/delivery processes/WaitingForAdminApproval.components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 function MakeDelivery() {

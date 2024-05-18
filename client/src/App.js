@@ -17,6 +17,7 @@ import UserViewSentDelivery from './pages/UserViewSentDelivery.page';
 import UserSentDeliveries from './pages/UserSentDeliveries.page';
 import UserRecievedDeliveries from './pages/UserReceivedDeliveries.page';
 import UserViewReceivedDelivery from './pages/UserViewReceivedDelivery.page';
+import AdminViewDelivery from './pages/AdminViewDelivery.page';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/admin/login" element={<><HomeNavbar/><AdminLogin /></>} />
         <Route path="/admin/home" element={<NavWrapper><AdminHome/></NavWrapper>} />
         <Route path="/admin/drones" element={<NavWrapper><AdminViewDrones/></NavWrapper>} />
+        <Route path="/admin/delivery/view/:id" element={<NavWrapper><AdminViewDelivery/></NavWrapper>} />
         <Route path="/admin/all" element={<NavWrapper><AdminDeliveries type="all"/></NavWrapper>} />
         <Route path="/admin/unprocessed" element={<NavWrapper><AdminDeliveries type="unprocessed"/></NavWrapper>} />
         <Route path="/admin/pending" element={<NavWrapper><AdminDeliveries type="pending"/></NavWrapper>} />

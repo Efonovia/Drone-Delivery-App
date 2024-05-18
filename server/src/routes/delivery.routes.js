@@ -20,8 +20,8 @@ deliveryRouter.get("/id/:id", getDelivery)
 
 deliveryRouter.get("/stats", getStats)
 deliveryRouter.get("/all", getAdminAllDeliveries)
+deliveryRouter.get("/unprocessed", getAdminUnProcessedDeliveries)
 deliveryRouter.get("/pending", getAdminPendingDeliveries)
-deliveryRouter.get("/unapproved", getAdminUnProcessedDeliveries)
 deliveryRouter.get("/completed", getCompletedDeliveries)
 
 deliveryRouter.get("/sender/:senderId", getSenderDeliveries)
