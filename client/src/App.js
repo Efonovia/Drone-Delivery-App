@@ -18,31 +18,41 @@ import UserSentDeliveries from './pages/UserSentDeliveries.page';
 import UserRecievedDeliveries from './pages/UserReceivedDeliveries.page';
 import UserViewReceivedDelivery from './pages/UserViewReceivedDelivery.page';
 import AdminViewDelivery from './pages/AdminViewDelivery.page';
+import FreeProtectedRoute from './components/auth/FreeProtectedRoute.components';
+import UserProtectedRoute from './components/auth/UserProtectedRoute.components';
+import AdminProtectedRoute from './components/auth/AdminProtectedRoute.components';
 
 
 function App() {
     return <BrowserRouter>
     <Routes>
-        <Route path="/" element={<><HomeNavbar/><Home/></>} />
-        <Route path="/user/register" element={<><HomeNavbar/><Register /></>} />
-        <Route path="/user/login" element={<><HomeNavbar/><Login /></>} />
-        <Route path="/user/profile" element={<><UserNavbar/><UserProfile /></>} />
-        <Route path="/user/drones" element={<><UserNavbar/><MakeDelivery/></>} />
-        <Route path="/user/sent" element={<><UserNavbar/><UserSentDeliveries /></>} />
-        <Route path="/user/sent/view/:id" element={<><UserNavbar/><UserViewSentDelivery/></>} />
-        <Route path="/user/received" element={<><UserNavbar/><UserRecievedDeliveries /></>} />
-        <Route path="/user/received/view/:id" element={<><UserNavbar/><UserViewReceivedDelivery/></>} />
-        <Route path="/user/friends" element={<><UserNavbar/><Friends /></>} />
 
+        <Route element={<FreeProtectedRoute />} >
+          <Route path="/" element={<><HomeNavbar/><Home/></>} />
+          <Route path="/user/register" element={<><HomeNavbar/><Register /></>} />
+          <Route path="/user/login" element={<><HomeNavbar/><Login /></>} />
+          <Route path="/admin/login" element={<><HomeNavbar/><AdminLogin /></>} />
+        </Route>
 
-        <Route path="/admin/login" element={<><HomeNavbar/><AdminLogin /></>} />
-        <Route path="/admin/home" element={<NavWrapper><AdminHome/></NavWrapper>} />
-        <Route path="/admin/drones" element={<NavWrapper><AdminViewDrones/></NavWrapper>} />
-        <Route path="/admin/delivery/view/:id" element={<NavWrapper><AdminViewDelivery/></NavWrapper>} />
-        <Route path="/admin/all" element={<NavWrapper><AdminDeliveries type="all"/></NavWrapper>} />
-        <Route path="/admin/unprocessed" element={<NavWrapper><AdminDeliveries type="unprocessed"/></NavWrapper>} />
-        <Route path="/admin/pending" element={<NavWrapper><AdminDeliveries type="pending"/></NavWrapper>} />
-        <Route path="/admin/completed" element={<NavWrapper><AdminDeliveries type="completed"/></NavWrapper>} />
+        <Route element={<UserProtectedRoute />} >
+          <Route path="/user/profile" element={<><UserNavbar/><UserProfile /></>} />
+          <Route path="/user/drones" element={<><UserNavbar/><MakeDelivery/></>} />
+          <Route path="/user/sent" element={<><UserNavbar/><UserSentDeliveries /></>} />
+          <Route path="/user/sent/view/:id" element={<><UserNavbar/><UserViewSentDelivery/></>} />
+          <Route path="/user/received" element={<><UserNavbar/><UserRecievedDeliveries /></>} />
+          <Route path="/user/received/view/:id" element={<><UserNavbar/><UserViewReceivedDelivery/></>} />
+          <Route path="/user/friends" element={<><UserNavbar/><Friends /></>} />
+        </Route>
+
+        <Route element={<AdminProtectedRoute />} >
+          <Route path="/admin/home" element={<NavWrapper><AdminHome/></NavWrapper>} />
+          <Route path="/admin/drones" element={<NavWrapper><AdminViewDrones/></NavWrapper>} />
+          <Route path="/admin/delivery/view/:id" element={<NavWrapper><AdminViewDelivery/></NavWrapper>} />
+          <Route path="/admin/all" element={<NavWrapper><AdminDeliveries type="all"/></NavWrapper>} />
+          <Route path="/admin/unprocessed" element={<NavWrapper><AdminDeliveries type="unprocessed"/></NavWrapper>} />
+          <Route path="/admin/pending" element={<NavWrapper><AdminDeliveries type="pending"/></NavWrapper>} />
+          <Route path="/admin/completed" element={<NavWrapper><AdminDeliveries type="completed"/></NavWrapper>} />
+        </Route>
 
     </Routes>
   </BrowserRouter>

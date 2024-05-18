@@ -41,7 +41,12 @@ export default function AlertDialogSlide(props) {
     })
 
     function handleApproval() {
-        changeApprovalMutation.mutate({ postDetails: { deliveryId: props.deliveryId, updates: [{ field: props.clientType, value: props.type }] }, route: `edit` })
+        let finalUpdates = [{ field: props.clientType, value: props.type }]
+        if(props.type === "denied") {
+            finalUpdates.push({ "field": "completed", "value" : false })
+        }
+        console.log("finalupdates", finalUpdates)
+        changeApprovalMutation.mutate({ postDetails: { deliveryId: props.deliveryId, updates: finalUpdates }, route: `edit` })
     }
 
   return (

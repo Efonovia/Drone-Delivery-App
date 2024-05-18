@@ -19,17 +19,17 @@ export const getStats = async(req, res) => {
         let total = 0
         let weight = 0
 
-        for(let i=0;i<6; i++) {
+        for(let i=0;i<allDeliveries.length; i++) {
             const current = allDeliveries[i]
-            income += current.price
-            weight += current.payloadWeight
             total += 1
-
+            
             if(current.completed) {
                 successful +=1
             }
-
-            if(current.receiverApproval === "approved" && current.adminApproval === "approved" && current.hasPaid && !current.completed) {
+            
+            if(current.receiverApproval === "approved" && current.adminApproval === "approved" && current.hasPaid) {
+                income += current.price
+                weight += current.payloadWeight
                 processed +=1
             }
         }
@@ -40,10 +40,10 @@ export const getStats = async(req, res) => {
                 totalIncome: income,
                 totalCustomers: customerCount,
                 totalDrones: 12,
-                processedDeliveries: active,
+                processedDeliveries: processed,
                 successfulDeliveries: successful,
                 totalDeliveries: total,
-                averagePackageWeight: weight/total
+                averagePackageWeight: (weight/total).toFixed(2)
             } 
         })
 
@@ -119,6 +119,7 @@ export const editDelivery = async(req, res) => {
         }
 
         const droneUpdate = updates.find(update => update.field === "droneType")
+        const completedUpdate = updates.find(update => update.field === "completed")
         if(droneUpdate) {
             const oldDrone = await DroneDatabase.findById(delivery.drone)
             oldDrone.isAvailable = true
@@ -130,9 +131,19 @@ export const editDelivery = async(req, res) => {
             delivery.drone = newDrone._id
             delivery.price = prices[droneUpdate.value]
         }
+
+        if(completedUpdate) {
+            const oldDrone = await DroneDatabase.findById(delivery.drone)
+            oldDrone.isAvailable = true
+            await oldDrone.save()
+            if(completedUpdate.value) {
+                delivery.deliveryCompletionDate = new Date()
+            }
+            delivery.completed = completedUpdate.value
+        }
         
         updates.forEach(({ field, value }) => {
-            if(field !== "droneType") {
+            if(!["droneType", "completed"].includes(field)) {
                 delivery[field] = value;
             }
         })

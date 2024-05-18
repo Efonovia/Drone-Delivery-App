@@ -27,7 +27,7 @@ function AdminHome() {
 
     }
     
-    const { totalIncome,totalCustomers,totalDrones,activeDeliveries,successfulDeliveries,totalDeliveries,averagePackageWeight } = getStatsQuery.data?.body
+    const { totalIncome,totalCustomers,totalDrones,processedDeliveries,successfulDeliveries,totalDeliveries,averagePackageWeight } = getStatsQuery.data?.body
 
     return (
         <div className="container-fluid p-0 ">
@@ -43,7 +43,7 @@ function AdminHome() {
                                     <span>Processed Deliveries</span>
                                     <div id="monitor_1" style={{minHeight: '20px'}}><EqualizerIcon sx={{ color: "#ffb11f" }}/></div>
                                 </div>
-                                <h4 className="counter">{activeDeliveries}</h4>
+                                <h4 className="counter">{processedDeliveries}</h4>
                             </div>
                             <div className="simgle_monitor_list">
                                 <div className="simgle_monitor_count d-flex align-items-center" style={{position: 'relative'}}>
