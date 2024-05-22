@@ -21,6 +21,7 @@ import AdminViewDelivery from './pages/AdminViewDelivery.page';
 import FreeProtectedRoute from './components/auth/FreeProtectedRoute.components';
 import UserProtectedRoute from './components/auth/UserProtectedRoute.components';
 import AdminProtectedRoute from './components/auth/AdminProtectedRoute.components';
+import TrackDelivery from './pages/TrackDelivery.page';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           <Route path="/user/received" element={<><UserNavbar/><UserRecievedDeliveries /></>} />
           <Route path="/user/received/view/:id" element={<><UserNavbar/><UserViewReceivedDelivery/></>} />
           <Route path="/user/friends" element={<><UserNavbar/><Friends /></>} />
+          <Route path="/user/delivery/track/:id" element={<><UserNavbar/><TrackDelivery /></>} />
         </Route>
 
         <Route element={<AdminProtectedRoute />} >

@@ -7,12 +7,14 @@ import AlertDialogSlide from '../components/mui/AlertDialogSlide.components';
 import ErrorBoundary from '../components/ErrorBoundary.components';
 import {useQuery} from "react-query"
 import { deliveryGetRequest } from '../hooks/users.hooks';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { formatDate, formatTime, getDeliveryStatus } from '../utils/utils';
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import { CircularProgress } from '@mui/material';
 
 function UserViewReceivedDelivery() {
     const deliveryId = useParams().id
+    const navigate = useNavigate()
     const [open, setOpen] = React.useState(false);
     const [type, setType] = React.useState("");
 
@@ -44,7 +46,7 @@ function UserViewReceivedDelivery() {
     }
 
     if(getDeliveryDetailsQuery.isError) {
-        return <ErrorBoundary message="There was an error fetching the delivery details. Check your intrenet and try again" isError={true}></ErrorBoundary>
+        return <ErrorBoundary message="There was an error fetching the delivery details. Check your internet and try again" isError={true}></ErrorBoundary>
     }
 
     const { sender, drone, pickupLocation, deliveryLocation, deliveryScheduledDate, price, payloadWeight, receiverApproval } = getDeliveryDetailsQuery.data?.body 
@@ -70,7 +72,11 @@ function UserViewReceivedDelivery() {
                     <button onClick={() => handleApproval("approved")} style={{background: "green", color: "white", border: "2px solid green"}} type="button" className="approve-btn btn mb-3 btn-primary"><CheckIcon />&nbsp;Accept</button>
                     <button onClick={() => handleApproval("denied")} style={{background: "red", color: "white", border: "2px solid red"}} type="button" className="deny-btn btn mb-3 btn-primary"><DoDisturbIcon />&nbsp;Deny</button>
                 </div> :
-                <div className='acceptance'>You {receiverApproval} this delivery</div>}
+                <>
+                    <div className='acceptance'>You {receiverApproval} this delivery</div>
+                    <button onClick={() => navigate("/user/delivery/track/"+deliveryId)} style={{background: "blue", color: "white", border: "2px solid blue"}} type="button" className="track-btn btn mb-3 btn-primary"><GpsFixedIcon />&nbsp;Track Delivery</button>
+                </>
+                }
             </div>
         </>
         

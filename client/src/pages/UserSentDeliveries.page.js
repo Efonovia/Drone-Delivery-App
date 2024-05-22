@@ -17,9 +17,10 @@ function UserSentDeliveries() {
     if(getUserSentDeliveriesQuery.isLoading) {
         return <CircularProgress sx={{margin: "200px 500px", color: "#ffb11f"}} size={100}/>
     }
-
+    
     const tableRowsHTML = [...sortDeliveries(getUserSentDeliveriesQuery.data?.body, "sender")].map((delivery, i) => {
         const statusObj = getDeliveryStatus(delivery, "sender")
+        const canTrack = ["Pending", "ACTIVE"].includes(statusObj.status)
         return <tr key={delivery._id}>
                     <th scope="row">{i+1}</th>
                     <td>{delivery.receiver.firstName + " " + delivery.receiver.lastName}</td>
@@ -27,6 +28,7 @@ function UserSentDeliveries() {
                     <td>{formatDate(delivery.deliveryScheduledDate)} by {formatTime(delivery.deliveryScheduledDate)}</td>
                     {statusObj.status === "ACTIVE" ? <td><span className='current'>ACTIVE</span></td> : <td style={{color: statusObj.color}}>{statusObj.status}</td>}
                     <td><span onClick={() => navigate(`/user/sent/view/${delivery._id}`)} className='view-button'>View</span></td>
+                    <td>{canTrack && <span onClick={() => navigate(`/user/delivery/track/${delivery._id}`)} className='view-button'>Track</span>}</td>
                 </tr>
     })
     return ( 
@@ -44,6 +46,7 @@ function UserSentDeliveries() {
                                             <th scope="col">Reciever Email</th>
                                             <th scope="col">Date Made</th>
                                             <th scope="col">Status</th>
+                                            <th scope="col"></th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>

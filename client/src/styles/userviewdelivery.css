@@ -39,6 +39,11 @@
     background: white !important
 }
 
+.track-btn:hover {
+    color: blue !important;
+    background: white !important
+}
+
 .deny-btn:hover {
     color: red !important;
     background: white !important

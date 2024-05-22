@@ -1,0 +1,13 @@
+.map-container {
+    border: 1px solid black;
+    /* width: 602px; */
+    /* height: 452px; */
+}
+
+.track-body {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 60px;
+}
