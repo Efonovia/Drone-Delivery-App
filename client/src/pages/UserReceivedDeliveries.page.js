@@ -20,6 +20,7 @@ function UserRecievedDeliveries() {
 
     const tableRowsHTML = [...sortDeliveries(getUserReceivedDeliveriesQuery.data?.body, "receiver")].map((delivery, i) => {
         const statusObj = getDeliveryStatus(delivery, "receiver")
+        const canTrack = ["Pending", "ACTIVE"].includes(statusObj.status)
         return <tr key={delivery._id}>
                 <th scope="row">{i+1}</th>
                 <td>{delivery.sender.firstName + " " + delivery.sender.lastName}</td>
@@ -27,6 +28,7 @@ function UserRecievedDeliveries() {
                 <td>{formatDate(delivery.deliveryScheduledDate)} by {formatTime(delivery.deliveryScheduledDate)}</td>
                 {statusObj.status === "ACTIVE" ? <td><span className='current'>ACTIVE</span></td> : <td style={{color: statusObj.color}}>{statusObj.status}</td>}
                 <td><span onClick={() => navigate(`/user/received/view/${delivery._id}`)} className='view-button'>View</span></td>
+                <td>{canTrack && <span onClick={() => navigate(`/user/delivery/track/${delivery._id}`)} className='view-button'>Track</span>}</td>
             </tr>
     })
 
@@ -45,6 +47,7 @@ function UserRecievedDeliveries() {
                                         <th scope="col">Sender's Email</th>
                                         <th scope="col">Date Made</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col"></th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>

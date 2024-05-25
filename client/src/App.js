@@ -43,13 +43,14 @@ function App() {
           <Route path="/user/received" element={<><UserNavbar/><UserRecievedDeliveries /></>} />
           <Route path="/user/received/view/:id" element={<><UserNavbar/><UserViewReceivedDelivery/></>} />
           <Route path="/user/friends" element={<><UserNavbar/><Friends /></>} />
-          <Route path="/user/delivery/track/:id" element={<><UserNavbar/><TrackDelivery /></>} />
+          <Route path="/user/delivery/track/:id" element={<><UserNavbar/><TrackDelivery type="user"/></>} />
         </Route>
 
         <Route element={<AdminProtectedRoute />} >
           <Route path="/admin/home" element={<NavWrapper><AdminHome/></NavWrapper>} />
           <Route path="/admin/drones" element={<NavWrapper><AdminViewDrones/></NavWrapper>} />
           <Route path="/admin/delivery/view/:id" element={<NavWrapper><AdminViewDelivery/></NavWrapper>} />
+          <Route path="/admin/delivery/track/:id" element={<NavWrapper><TrackDelivery type="admin"/></NavWrapper>} />
           <Route path="/admin/all" element={<NavWrapper><AdminDeliveries type="all"/></NavWrapper>} />
           <Route path="/admin/unprocessed" element={<NavWrapper><AdminDeliveries type="unprocessed"/></NavWrapper>} />
           <Route path="/admin/pending" element={<NavWrapper><AdminDeliveries type="pending"/></NavWrapper>} />

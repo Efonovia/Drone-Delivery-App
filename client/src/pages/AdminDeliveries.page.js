@@ -10,6 +10,7 @@ import ErrorBoundary from '../components/ErrorBoundary.components';
 import { CircularProgress } from '@mui/material';
 import { formatDate, getDeliveryStatus } from '../utils/utils';
 import { useNavigate } from 'react-router-dom';
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 
 
 function AdminDeliveries(props) {
@@ -31,6 +32,7 @@ function AdminDeliveries(props) {
 
     const tableRowsHTML = [...sortDeliveries(getDeliveriesQuery.data?.body, "admin")].map((delivery, i) => {
         const statusObj = getDeliveryStatus(delivery, "admin")
+        const canTrack = ["Pending", "ACTIVE"].includes(statusObj.status)
         return <tr key={delivery._id}>
                     <th scope="row">{i+1}</th>
                     <td>{delivery.receiver.firstName + " " + delivery.receiver.lastName}</td>
@@ -38,6 +40,7 @@ function AdminDeliveries(props) {
                     <td>{formatDate(delivery.deliveryScheduledDate)} by {formatTime(delivery.deliveryScheduledDate)}</td>
                     {statusObj.status === "ACTIVE" ? <td><span className='current'>ACTIVE</span></td> : <td style={{color: statusObj.color}}>{statusObj.status}</td>}
                     <td><span onClick={() => navigate(`/admin/delivery/view/${delivery._id}`)} className='view-button'><VisibilityIcon sx={{color: "#302d43"}}/> View</span></td>
+                    <td>{true && <span onClick={() => navigate(`/admin/delivery/track/${delivery._id}`)} className='view-button'><GpsFixedIcon sx={{color: "#302d43"}}/> Track</span>}</td>
                 </tr>
     })
 
@@ -64,6 +67,7 @@ function AdminDeliveries(props) {
                                                 <th scope="col"><PersonIcon sx={{color: "#ffb11f"}}/> Receipient</th>
                                                 <th scope="col"><CalendarMonthIcon sx={{color: "#ffb11f"}}/>Date</th>
                                                 <th scope="col"><CreateIcon sx={{color: "#ffb11f"}}/>Status</th>
+                                                <th scope="col"></th>
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>

@@ -1,7 +1,5 @@
 .map-container {
-    border: 1px solid black;
-    /* width: 602px; */
-    /* height: 452px; */
+    position: relative;
 }
 
 .track-body {
@@ -10,4 +8,54 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 60px;
+}
+
+.track-body-admin {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .route {
+    width: 5px;
+    height: 500px;
+    background-color: #fbb11f;
+    position: absolute;
+    left: 500px;
+    transform: rotate(-60deg);
+}
+
+.drone-obj {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    left: 280px;
+    top: 300px;
+    animation: fly 120s linear forwards; 
+} */
+.route {
+    width: 5px;
+    height: 500px;
+    background-color: #fbb11f;
+    position: absolute;
+    left: 350px;
+    transform: rotate(-60deg);
+}
+
+.drone-obj {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    left: 120px;
+    top: 110px;
+    animation: fly 120s linear forwards; 
+}
+
+@keyframes fly {
+    100% {
+        left: 550px;
+        top: 360px;
+    }
 }

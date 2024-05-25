@@ -7,14 +7,12 @@ import AlertDialogSlide from '../components/mui/AlertDialogSlide.components';
 import ErrorBoundary from '../components/ErrorBoundary.components';
 import {useQuery} from "react-query"
 import { deliveryGetRequest } from '../hooks/users.hooks';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { formatDate, formatTime, getDeliveryStatus } from '../utils/utils';
-import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import { CircularProgress } from '@mui/material';
 
 function UserViewReceivedDelivery() {
     const deliveryId = useParams().id
-    const navigate = useNavigate()
     const [open, setOpen] = React.useState(false);
     const [type, setType] = React.useState("");
 
@@ -74,7 +72,6 @@ function UserViewReceivedDelivery() {
                 </div> :
                 <>
                     <div className='acceptance'>You {receiverApproval} this delivery</div>
-                    <button onClick={() => navigate("/user/delivery/track/"+deliveryId)} style={{background: "blue", color: "white", border: "2px solid blue"}} type="button" className="track-btn btn mb-3 btn-primary"><GpsFixedIcon />&nbsp;Track Delivery</button>
                 </>
                 }
             </div>

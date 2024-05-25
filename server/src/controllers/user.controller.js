@@ -81,6 +81,7 @@ export const loginUser = async(req, res) => {
       
       return await res.status(200).json({ ok: true, body: user })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({ ok: false, error: "server error. try again" })
     }
 }
