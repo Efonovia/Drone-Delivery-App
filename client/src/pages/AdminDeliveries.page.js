@@ -40,7 +40,7 @@ function AdminDeliveries(props) {
                     <td>{formatDate(delivery.deliveryScheduledDate)} by {formatTime(delivery.deliveryScheduledDate)}</td>
                     {statusObj.status === "ACTIVE" ? <td><span className='current'>ACTIVE</span></td> : <td style={{color: statusObj.color}}>{statusObj.status}</td>}
                     <td><span onClick={() => navigate(`/admin/delivery/view/${delivery._id}`)} className='view-button'><VisibilityIcon sx={{color: "#302d43"}}/> View</span></td>
-                    <td>{true && <span onClick={() => navigate(`/admin/delivery/track/${delivery._id}`)} className='view-button'><GpsFixedIcon sx={{color: "#302d43"}}/> Track</span>}</td>
+                    <td>{canTrack && <span onClick={() => navigate(`/admin/delivery/track/${delivery._id}`)} className='view-button'><GpsFixedIcon sx={{color: "#302d43"}}/> Track</span>}</td>
                 </tr>
     })
 

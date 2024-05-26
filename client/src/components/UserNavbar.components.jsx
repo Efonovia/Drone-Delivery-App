@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import "../styles/usernavbar.css"
 import { useDispatch } from 'react-redux';
 import { setUser } from '../state';
+import appLogo from "../assets/img/app_logo.png"
 
 
 function UserNavbar() {
@@ -27,7 +28,8 @@ function UserNavbar() {
         <>
             <div className="navbar">
                 <div className="nav-logo">
-                    <a href>Logo</a>
+                    <img width={50} height={50} src={appLogo} alt='logo'></img>
+                    <a href>FLY-BY DELIVERIES</a>
                 </div>
                 <div className="nav-items">
                     <ul>

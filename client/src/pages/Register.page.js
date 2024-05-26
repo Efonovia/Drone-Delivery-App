@@ -140,7 +140,7 @@ function Register() {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="signup-right-area">
-                                        <h2 className="title">Welcome To App NAme </h2>
+                                        <h2 className="title">Welcome To Fly-By Deliveries </h2>
                                     </div>
                                 </div>
                             </div>

@@ -67,7 +67,11 @@
 }
 
 .nav-logo {
-    font-size: 32px;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
 .nav-button {

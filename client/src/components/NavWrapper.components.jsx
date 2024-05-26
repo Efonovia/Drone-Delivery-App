@@ -1,6 +1,4 @@
 import React from 'react';
-import bigLogo from "../assets/img/logo_white.png"
-import miniLogo from "../assets/img/mini_logo.png"
 import HorizontalNav from './HorizontalNav.components';
 import CloseIcon from '@mui/icons-material/Close';
 import { capitalizeWords } from '../utils/utils';
@@ -12,6 +10,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import CheckIcon from '@mui/icons-material/Check';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import { nanoid } from '@reduxjs/toolkit';
+import appLogo from "../assets/img/app_logo.png"
 
 
 const navElements = [
@@ -45,9 +44,10 @@ function NavWrapper({ children }) {
         <>
             <nav className={`sidebar dark_sidebar ${open && "active_sidebar"}`}>
                 <div className="logo d-flex justify-content-between">
-                    {/* <a className="large_logo" href><img src={bigLogo} alt="pic" /></a>
-                    <a className="small_logo" href><img src={miniLogo} alt="pic" /></a> */}
-                    <a style={{color: "white"}} href>ADMIN LOGO</a>
+                    <div>
+                        <img width={30} height={30} src={appLogo} alt="pic" />
+                        <a style={{color: "white", fontSize: "18px"}} href>Fly-By Deliveries</a>
+                    </div>
                     <div onClick={() => setOpen(false)} className="sidebar_close_icon d-lg-none">
                         <CloseIcon size='50' sx={{ color: "white", cursor: "pointer" }}/>
                     </div>

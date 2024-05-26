@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../styles/usernavbar.css"
+import appLogo from "../assets/img/app_logo.png"
 
 
 function HomeNavbar() {
@@ -12,7 +13,8 @@ function HomeNavbar() {
         <>
             {!open && <><div className="navbar">
                 <div className="nav-logo">
-                    <a href>Logo</a>
+                    <img width={50} height={50} src={appLogo} alt='logo'></img>
+                    <a href>FLY-BY DELIVERIES</a>
                 </div>
                 <div className='extra-buttons'>
                     <div onClick={()=>navigate("/user/login")} className="nav-button">

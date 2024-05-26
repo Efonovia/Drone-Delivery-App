@@ -8,7 +8,7 @@ function Home() {
         <>
             <section className="services" id="services">
                 <div className="container">
-                    <h1>NAME OF <span className='home-span'>APP</span></h1>
+                    <h1><span className='home-span'>FLY-BY</span>DELIVERIES</h1>
                     <p>
                     Welcome to our innovative drone delivery platform, where efficiency meets convenience! Say goodbye to traditional delivery methods and embrace the future of logistics. Our platform empowers users like you to revolutionize how goods are transported, offering a seamless and reliable solution for all your delivery needs. Whether you're a business looking to optimize your supply chain or an individual seeking swift and eco-friendly delivery options, our platform has you covered. With a diverse selection of drones and advanced technology at your fingertips, you can effortlessly schedule, track, and manage deliveries with ease. Join us as we soar to new heights in the world of unmanned aerial delivery.
                     </p>
