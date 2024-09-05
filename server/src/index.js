@@ -25,6 +25,9 @@ app.use(cors())
 
 
 //ROUTES
+app.get("/", (req, res) => {
+    res.send("Welcome to FLY-BY DELIVERIES...")
+})
 app.use("/users", usersRouter)
 app.use("/drones", dronesRouter)
 app.use("/deliveries", deliveryRouter)
