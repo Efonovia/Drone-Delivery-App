@@ -5,9 +5,9 @@ import cors from "cors"
 import dotenv from "dotenv"
 import helmet from "helmet";
 import morgan from "morgan";
-import usersRouter from "./routes/user.routes.js";
-import dronesRouter from "./routes/drone.routes.js";
-import deliveryRouter from "./routes/delivery.routes.js";
+import usersRouter from "./src/routes/user.routes.js";
+import dronesRouter from "./src/routes/drone.routes.js";
+import deliveryRouter from "./src/routes/delivery.routes.js";
 
 
 // CONFIGURATION
