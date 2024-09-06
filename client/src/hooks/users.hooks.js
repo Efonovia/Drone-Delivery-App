@@ -1,5 +1,5 @@
 /* eslint-disable no-throw-literal */
-const API_URL = "http://localhost:8000"
+const API_URL = "https://flyby-deliveries-api.vercel.app"
 
 export const userPostRequest = async ({postDetails, route}) => {
     const response =  await fetch(`${API_URL}/users/${route}`, {
