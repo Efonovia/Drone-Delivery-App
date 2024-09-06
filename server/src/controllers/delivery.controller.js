@@ -66,7 +66,7 @@ export const createDelivery = async(req, res) => {
         } = req.body
 
         const drone = await DroneDatabase.findOne({ type: droneType, isAvailable: true })
-        const receiverUser = await UserDatabase.findOne({ email: receiver })
+        const receiverUser = await UserDatabase.findOne({ email: receiver, isAdmin: false })
 
         if(receiverUser._id === sender)  {
             return res.status(404).json({ ok: false, error: "You can't send a delivery to yourself" })
