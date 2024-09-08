@@ -21,7 +21,7 @@ function ProcessPayment(props) {
     })
 
     function handlePayment() {
-        deliveryMutation.mutate({ postDetails: { deliveryId: props.deliveryId, updates: [{ field: "hasPaid", value: true }] }, route: "/edit" })
+        deliveryMutation.mutate({ postDetails: { deliveryId: props.deliveryId, updates: [{ field: "hasPaid", value: true }] }, route: "edit" })
     }
 
     if(deliveryMutation.isLoading) {

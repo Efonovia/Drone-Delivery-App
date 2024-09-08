@@ -11,7 +11,7 @@ import ScaleIcon from '@mui/icons-material/Scale';
 
 
 function AdminHome() {
-    const getStatsQuery = useQuery("get drone availability fro admin", () => deliveryGetRequest({ route: "/stats" }), {
+    const getStatsQuery = useQuery("get drone availability fro admin", () => deliveryGetRequest({ route: "stats" }), {
         cacheTime: 0,
         staleTime: 2000000,
     })
