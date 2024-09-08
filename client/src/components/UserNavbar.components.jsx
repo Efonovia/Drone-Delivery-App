@@ -21,8 +21,13 @@ function UserNavbar() {
     function logout() {
         dispatch(setUser(null))
         navigate("/")
+        setOpen(false)
     }
 
+    function mobileNavigate(route) {
+        navigate(route)
+        setOpen(false)
+    }
     
     return (
         <>
@@ -65,20 +70,24 @@ function UserNavbar() {
             <div style={{marginTop: "60px", zIndex: 99999999999, display: open ? "flex": "none", transform: open ? "translateX(0%)": "translateX(-100%)"}} id="mobile-menu">
                 <div className="mobile-nav-items">
                     <ul>
-                    <li onClick={()=>navigate("/user/profile")}>
-                            <a href><PersonIcon sx={{width: 20, height: 20, color: "#ffb11f"}} /> Profile </a>
+                    <li onClick={()=>mobileNavigate("/user/profile")}>
+                            <a href><PersonIcon sx={{width: 20, height: 20, color: "#373063"}} /> Profile </a>
                         </li>
-                        <li onClick={()=>navigate("/user/drones")}>
-                            <a href><ConnectingAirportsIcon sx={{height: 20, width: 20, color: "#ffb11f"}}/> Drones </a>
+                        <li onClick={()=>mobileNavigate("/user/drones")}>
+                            <a href><ConnectingAirportsIcon sx={{height: 20, width: 20, color: "#373063"}}/> Drones </a>
                         </li>
-                        <li onClick={()=>navigate("/user/sent")}>
-                            <a href><CallMadeIcon sx={{height: 20, width: 20, color: "#ffb11f"}}/> Sent Deliveries </a>
+                        <li onClick={()=>mobileNavigate("/user/sent")}>
+                            <a href><CallMadeIcon sx={{height: 20, width: 20, color: "#373063"}}/> Sent Deliveries </a>
                         </li>
-                        <li onClick={()=>navigate("/user/received")}>
-                            <a href><CallReceivedIcon sx={{height: 20, width: 20, color: "#ffb11f"}}/> Received Deliveries </a>
+                        <li onClick={()=>mobileNavigate("/user/received")}>
+                            <a href><CallReceivedIcon sx={{height: 20, width: 20, color: "#373063"}}/> Received Deliveries </a>
                         </li>
-                        <li onClick={()=>navigate("/user/friends")}>
-                            <a href><PeopleAltIcon sx={{height: 20, width: 20, color: "#ffb11f"}}/> Friends </a>
+                        <li onClick={()=>mobileNavigate("/user/friends")}>
+                            <a href><PeopleAltIcon sx={{height: 20, width: 20, color: "#373063"}}/> Friends </a>
+                        </li>
+
+                        <li onClick={logout}>
+                            <a href><LogoutIcon sx={{height: 20, width: 20, color: "#373063"}}/> Sign Out </a>
                         </li>
                     </ul>
                 </div>
